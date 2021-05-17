@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-develop
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-develop
+  template:
+    metadata:
+      labels:
+        app: nginx-develop
+    spec:
+      priorityClassName: develop-priority
+      containers:
+        - image: nginx:1.13
+          name: nginx-develop
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 200m
+              memory: 100Mi
+            limits:
+              cpu: 200m
+              memory: 100Mi

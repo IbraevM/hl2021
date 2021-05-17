@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-prod
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-prod
+  template:
+    metadata:
+      labels:
+        app: nginx-prod
+    spec:
+      priorityClassName: production-priority 
+      containers:
+        - image: nginx:1.14
+          name: nginx-prod
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 400m
+              memory: 200Mi
+            limits:
+              cpu: 400m
+              memory: 200Mi
