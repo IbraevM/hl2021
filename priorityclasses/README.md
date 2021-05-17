@@ -47,3 +47,23 @@ kubectl drain node node-2.s<ваш номер логина>.slurm.io --ignore-da
 kubectl get pod -n production
 kubectl get pod -n development
 ```
+
+7) Подчищаем за собой:
+
+```bash
+kubectl delete deployment --all -n production
+kubectl delete deployment --all -n development
+
+kubectl uncordon node-2.s<ваш номер логина>.slurm.io
+```
+
+8) Правим манифест Deployment для Production окружения так, чтобы у него было `Requests: 800 mCPU`
+
+9) Снова деплоим наши приложения:
+
+```bash
+kubectl create -f deployment-prod.yaml -n production
+kubectl create -f deployment-develop.yaml -n development
+```
+
+10) Смотрим, а что у нас там с Flannel? :)
