@@ -18,7 +18,7 @@ kubectl create -f pc-prod.yaml
 kubectl create -f pc-develop.yaml
 
 kubectl create ns production
-kubectl crate ns development
+kubectl create ns development
 ```
 
 4) Деплоим наши приложения
@@ -42,7 +42,7 @@ kubectl describe node node-2.s<ваш номер логина>.slurm.io
 6) Эвакуируем pod'ы с ноды. Смотрим на Pod'ы production и development окружения. Наш Production должен работать
 
 ```bash
-kubectl drain node node-2.s<ваш номер логина>.slurm.io --ignore-daemonsets
+kubectl drain node-2.s<ваш номер логина>.slurm.io --ignore-daemonsets
 
 kubectl get pod -n production
 kubectl get pod -n development
