@@ -5,7 +5,7 @@ metadata:
   name: nginx
 spec:
   rules:
-    - host: nginx.s010156.edu.slurm.io
+    - host: nginx.s<номер своего логина>.edu.slurm.io
       http:
         paths:
           - backend:
